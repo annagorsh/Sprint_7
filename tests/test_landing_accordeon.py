@@ -1,4 +1,3 @@
-import allure
 import links
 from pages.landing_page import *
 import time
