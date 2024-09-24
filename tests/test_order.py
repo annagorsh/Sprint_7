@@ -1,42 +1,51 @@
+from selenium.webdriver.firefox import webdriver
 import links
 from pages.order_page import *
 from pages.tracking_page import *
-import time
+from pages.receiver_form_page import *
+from pages.rent_details_page import *
 
 class TestOrder:
     driver = None
 
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
-
     @allure.title("Проверка создания заказа и перехода на главную по клику на 'Самокат' в логотипе")
     def test_click_scooter(self):
-        self.driver.get(links.MAIN_URL)
+        self.driver = webdriver.Firefox()
         main = OrderPage(self.driver)
+        main.navigate(links.MAIN_URL)
         main.cookie_close()
         main.go_to_order_top()
-        main.order_flow()
-        main.click_scooter()
+        receiver = ReceiverFormPage(self.driver)
+        receiver.fill_in_receiver_form()
+        rent = RentDetailsFormPage(self.driver)
+        rent.fill_in_rent_form()
+        track_page = TrackingPage(self.driver)
+        order_created = track_page.wait_for_element_visible(TrackingPageLocators.cancel_button)
+        assert order_created.is_displayed()
+        track_page.scooter_click()
         expected_url = links.MAIN_URL
         assert self.driver.current_url == expected_url
+        self.driver.quit()
 
     @allure.title("Проверка создания заказа и перехода на 'Дзен' по клику на 'Яндекс' в логотипе")
     def test_click_yandex(self):
-        self.driver.get(links.MAIN_URL)
+        self.driver = webdriver.Firefox()
         main = OrderPage(self.driver)
+        main.navigate(links.MAIN_URL)
+        main.cookie_close()
         main.scroll_to_bottom()
-        time.sleep(3)
+        main.wait_for_element_visible(LandingPageLocators.bottom_order_button)
         main.go_to_order_bottom()
-        main.order_flow()
-        time.sleep(3)
-        main.click_yandex()
-        tabs = main.driver.window_handles
-        main.driver.switch_to.window(tabs[1])
-        time.sleep(5)
+        receiver = ReceiverFormPage(self.driver)
+        receiver.fill_in_receiver_form()
+        rent = RentDetailsFormPage(self.driver)
+        rent.fill_in_rent_form()
+        track_page = TrackingPage(self.driver)
+        order_created = track_page.wait_for_element_visible(TrackingPageLocators.cancel_button)
+        assert order_created.is_displayed()
+        track_page.yandex_click()
+        track_page.switch_tab()
+        track_page.wait_for_element_visible(MiscLocators.yandex_search_logo)
         expected_url = links.DZEN_URL
         assert self.driver.current_url == expected_url
-
-    @classmethod
-    def teardown_class(cls):
-        cls.driver.quit()
+        self.driver.quit()

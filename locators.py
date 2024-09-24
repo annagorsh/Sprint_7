@@ -1,5 +1,4 @@
 from selenium.webdriver.common.by import By
-import pytest
 
 class LandingPageLocators():
     top_order_button = [By.XPATH, "//button[@class='Button_Button__ra12g'][contains(.,'Заказать')]"]
@@ -102,3 +101,6 @@ class TrackingPageLocators:
 
     #Лого "Самокат"
     scooter_logo = [By.XPATH, "//img[@alt='Scooter']"]
+
+class MiscLocators:
+    yandex_search_logo = [By.CSS_SELECTOR, ".dzen-layout--collapse-button__collapseButton-z1"]
