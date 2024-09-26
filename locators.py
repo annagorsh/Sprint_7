@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-class LandingPageLocators():
+class OrderPageLocators():
     top_order_button = [By.XPATH, "//button[@class='Button_Button__ra12g'][contains(.,'Заказать')]"]
 
     bottom_order_button = [By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][contains(.,'Заказать')]"]
@@ -77,7 +77,7 @@ class RentDetailsLocators:
     #Кнопка заказать внизу страницы
     order_button = [By.XPATH, "//button[@class='Button_Button__ra12g Button_Middle__1CSJM'][contains(.,'Заказать')]"]
 
-class OrderPopupLocators:
+class OrderConfirmPopupLocators:
     #Всплывашка с подтверждением
     #Заголовок
     order_confirm_header = [By.XPATH, "//div[contains(.,'Хотите оформить заказ?')]"]
@@ -85,6 +85,7 @@ class OrderPopupLocators:
     #Кнопка "Да"
     order_confirm_yes_button = [By.XPATH, "//button[contains(.,'Да')]"]
 
+class OrderCreatedPopupLocators:
     #Всплывашка с номером
     #Заголовок
     order_created_header = [By.XPATH, "//div[contains(.,'Заказ оформлен')]"]
@@ -94,7 +95,7 @@ class OrderPopupLocators:
 
 class TrackingPageLocators:
     #Кнопка "Отменить заказ"
-    cancel_button = [By.XPATH, "//button[contains(.,'Отменить заказ')]"]
+    cancel_button = [By.CSS_SELECTOR, "button.Button_Button__ra12g:nth-child(14)"]
 
     #Лого "Яндекс"
     ya_logo = [By.XPATH, "//img[@alt='Yandex']"]
@@ -102,5 +103,5 @@ class TrackingPageLocators:
     #Лого "Самокат"
     scooter_logo = [By.XPATH, "//img[@alt='Scooter']"]
 
-class MiscLocators:
+class DzenLocators:
     yandex_search_logo = [By.CSS_SELECTOR, ".dzen-layout--collapse-button__collapseButton-z1"]

@@ -47,3 +47,4 @@ class BasePage:
             close_button.click()
         except NoSuchElementException:
             pass
+

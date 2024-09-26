@@ -15,7 +15,6 @@ class RentDetailsFormPage(BasePage):
     def fill_in_date(self):
         self.enter_text(RentDetailsLocators.date_field, "31.12.2024")
 
-
     @allure.step("Прожимаем Enter после ввода даты")
     def press_enter_date(self):
         self.enter_text(RentDetailsLocators.date_field, Keys.ENTER)
@@ -38,21 +37,6 @@ class RentDetailsFormPage(BasePage):
     def click_order_at_rent_details(self):
         self.click_element(RentDetailsLocators.order_button)
 
-    @allure.step("Ждём появления всплывающего окна 'Хотите оформить заказ?'")
-    def wait_for_popup1(self):
-        self.wait_for_element_visible(OrderPopupLocators.order_confirm_header)
-
-    @allure.step("Нажимаем 'Да' во всплывающем окне")
-    def click_yes(self):
-        self.click_element(OrderPopupLocators.order_confirm_yes_button)
-
-    @allure.step("Ждём появления всплывающего окна с номером заказа")
-    def wait_for_popup2(self):
-        self.wait_for_element_visible(OrderPopupLocators.order_created_header)
-
-    @allure.step("Кликаем на 'Посмотреть статус' для перехода к странице статуса заказа")
-    def click_to_see_order_page(self):
-        self.click_element(OrderPopupLocators.go_to_order_button)
 
     @allure.step("Заполняем форму 'Про аренду'")
     def fill_in_rent_form(self):
@@ -62,7 +46,5 @@ class RentDetailsFormPage(BasePage):
         self.pick_duration()
         self.pick_colour_black()
         self.click_order_at_rent_details()
-        self.wait_for_popup1()
-        self.click_yes()
-        self.wait_for_popup2()
-        self.click_to_see_order_page()
+
+

@@ -7,7 +7,7 @@ class TrackingPage(BasePage):
 
     @allure.step("Проверяем, что мы на странице с трекингом заказа")
     def wait_for_tracking_page(self):
-        self.wait_for_element_visible(TrackingPageLocators.cancel_button)
+        return self.wait_for_element_visible(TrackingPageLocators.cancel_button)
 
     @allure.step("Кликаем по слову 'Яндекс' в логотипе")
     def yandex_click(self):
@@ -17,6 +17,3 @@ class TrackingPage(BasePage):
     def scooter_click(self):
         self.click_element(TrackingPageLocators.scooter_logo)
 
-    @allure.step("Дожидаемся отображения информации о заказе")
-    def wait_for_tracking_page_visible(self):
-        self.wait_for_element_visible(TrackingPageLocators.cancel_button)

@@ -14,14 +14,14 @@ class TestLandingAccordeon:
     @allure.title("Проверяем, что раскрываются все пункты в блоке вопросов и ответов")
     @pytest.mark.parametrize("question, answer",
                              [
-                                 [LandingPageLocators.accordeon_1, LandingPageLocators.accordeon_text_1],
-                                 [LandingPageLocators.accordeon_2, LandingPageLocators.accordeon_text_2],
-                                 [LandingPageLocators.accordeon_3, LandingPageLocators.accordeon_text_3],
-                                 [LandingPageLocators.accordeon_4, LandingPageLocators.accordeon_text_4],
-                                 [LandingPageLocators.accordeon_5, LandingPageLocators.accordeon_text_5],
-                                 [LandingPageLocators.accordeon_6, LandingPageLocators.accordeon_text_6],
-                                 [LandingPageLocators.accordeon_7, LandingPageLocators.accordeon_text_7],
-                                 [LandingPageLocators.accordeon_8, LandingPageLocators.accordeon_text_8]
+                                 [OrderPageLocators.accordeon_1, OrderPageLocators.accordeon_text_1],
+                                 [OrderPageLocators.accordeon_2, OrderPageLocators.accordeon_text_2],
+                                 [OrderPageLocators.accordeon_3, OrderPageLocators.accordeon_text_3],
+                                 [OrderPageLocators.accordeon_4, OrderPageLocators.accordeon_text_4],
+                                 [OrderPageLocators.accordeon_5, OrderPageLocators.accordeon_text_5],
+                                 [OrderPageLocators.accordeon_6, OrderPageLocators.accordeon_text_6],
+                                 [OrderPageLocators.accordeon_7, OrderPageLocators.accordeon_text_7],
+                                 [OrderPageLocators.accordeon_8, OrderPageLocators.accordeon_text_8]
                              ])
     def test_questions_and_answers_block(self, question, answer):
         main = OrderPage(self.driver)
